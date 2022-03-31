@@ -1,0 +1,295 @@
+###############################################################################
+#
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  13/Jan/2022  18:34:39
+# Copyright 2007-2021 IAR Systems AB.
+#
+#    Output file  =  E:\Embedded\New folder\Debug\Exe\Embedded-Project.out
+#    Map file     =  E:\Embedded\New folder\Debug\List\Embedded-Project.map
+#    Command line =
+#        -f "E:\Embedded\New folder\Debug\Exe\Embedded-Project.out.rsp"
+#        ("E:\Embedded\New folder\Debug\Obj\main.o" --no_out_extension -o
+#        "E:\Embedded\New folder\Debug\Exe\Embedded-Project.out" --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        "E:\Embedded\New folder\Debug\List\Embedded-Project.map" --config
+#        E:\IAR\arm\CONFIG\generic_cortex.icf --semihosting
+#        C:\ti\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a
+#        --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** MESSAGES
+***
+
+Warning[Lt009]: Inconsistent wchar_t size
+            gpio.o(driverlib.a) and 4 other objects in driverlib.a have wchar_t
+                      size 16 bits
+            main.o and 13 other objects, some of them in dl7M_tln.a and 11
+                      other libraries have wchar_t size 32 bits
+
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x7'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address   Size  Object
+  -------            ----         -------   ----  ------
+"A0":                                       0x40
+  .intvec            ro code          0x0   0x40  vector_table_M.o [5]
+                                   - 0x40   0x40
+
+"P1":                                      0xf9c
+  .text              ro code         0x40  0x5c8  main.o [1]
+  .text              ro code        0x608  0x458  gpio.o [3]
+  .text              ro code        0xa60  0x1a0  timer.o [3]
+  .text              ro code        0xc00  0x140  sysctl.o [3]
+  .text              ro code        0xd40  0x160  interrupt.o [3]
+  .text              ro code        0xea0   0x38  zero_init3.o [5]
+  .text              ro code        0xed8   0x2a  copy_init3.o [5]
+  .text              ro code        0xf02    0x2  vectortrap_M.o [5]
+  .text              ro code        0xf04   0x28  data_init.o [5]
+  .text              ro code        0xf2c   0x22  fpinit_M.o [4]
+  .iar.init_table    const          0xf50   0x24  - Linker created -
+  .text              ro code        0xf74   0x1e  cmain.o [5]
+  .text              ro code        0xf92    0x4  low_level_init.o [2]
+  .text              ro code        0xf96    0x4  exit.o [2]
+  .text              ro code        0xf9c    0xa  cexit.o [5]
+  .text              ro code        0xfa8   0x14  exit.o [6]
+  .text              ro code        0xfbc   0x1c  cstartup_M.o [5]
+  Initializer bytes  const          0xfd8    0x4  <for P2-1>
+  .rodata            const          0xfdc    0x0  zero_init3.o [5]
+  .rodata            const          0xfdc    0x0  copy_init3.o [5]
+                                  - 0xfdc  0xf9c
+
+"P2", part 1 of 3:                           0x4
+  P2-1                        0x2000'0000    0x1  <Init block>
+    .data            inited   0x2000'0000    0x1  main.o [1]
+                            - 0x2000'0001    0x1
+
+"P2", part 2 of 3:                         0x66c
+  VTABLE             zero     0x2000'0400  0x26c  interrupt.o [3]
+  .bss               zero     0x2000'066c    0x1  main.o [1]
+  .bss               zero     0x2000'066d    0x1  main.o [1]
+                            - 0x2000'066e  0x66a
+
+"P2", part 3 of 3:                         0x400
+  CSTACK                      0x2000'0670  0x400  <Block>
+    CSTACK           uninit   0x2000'0670  0x400  <Block tail>
+                            - 0x2000'0a70  0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0xfdc     0x7'ffff  0x7'f024
+  0x2000'0a70  0x2000'ffff    0xf590
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x26e:
+          0x2000'0400  0x26e
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x4 (400% of destination):
+                0xfd8    0x4
+    1 destination range, total size 0x1:
+          0x2000'0000    0x1
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+E:\Embedded\New folder\Debug\Obj: [1]
+    main.o              1'480        1        3
+    -------------------------------------------
+    Total:              1'480        1        3
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+driverlib.a: [3]
+    gpio.o              1'112
+    interrupt.o           352               620
+    sysctl.o              320
+    timer.o               416
+    -------------------------------------------
+    Total:              2'200               620
+
+m7M_tls.a: [4]
+    fpinit_M.o             34
+    -------------------------------------------
+    Total:                 34
+
+rt7M_tl.a: [5]
+    cexit.o                10
+    cmain.o                30
+    copy_init3.o           42
+    cstartup_M.o           28
+    data_init.o            40
+    vector_table_M.o       64
+    vectortrap_M.o          2
+    zero_init3.o           56
+    -------------------------------------------
+    Total:                272
+
+shb_l.a: [6]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    4        2    1'020
+    Linker created                  39    1'024
+-----------------------------------------------
+    Grand Total:        4'018       42    2'667
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base         0xf50          --   Gb  - Linker created -
+.iar.init_table$$Limit        0xf74          --   Gb  - Linker created -
+?main                         0xf75         Code  Gb  cmain.o [5]
+BusFault_Handler              0xf03         Code  Wk  vectortrap_M.o [5]
+CSTACK$$Base            0x2000'0670          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0a70          --   Gb  - Linker created -
+CalculateTicks                 0x41    0xa  Code  Gb  main.o [1]
+CurrState               0x2000'066c    0x1  Data  Gb  main.o [1]
+CurrState2              0x2000'066d    0x1  Data  Gb  main.o [1]
+DebugMon_Handler              0xf03         Code  Wk  vectortrap_M.o [5]
+GPIODirModeSet                0x649   0x28  Code  Gb  gpio.o [3]
+GPIOIntClear                  0x83d    0x6  Code  Gb  gpio.o [3]
+GPIOIntDisable                0x837    0x6  Code  Gb  gpio.o [3]
+GPIOIntEnable                 0x831    0x6  Code  Gb  gpio.o [3]
+GPIOIntRegister               0x843   0x14  Code  Gb  gpio.o [3]
+GPIOIntTypeSet                0x671   0x4c  Code  Gb  gpio.o [3]
+GPIOPadConfigSet              0x6bd  0x174  Code  Gb  gpio.o [3]
+GPIOPinRead                   0x85f    0x6  Code  Gb  gpio.o [3]
+GPIOPinTypeGPIOInput          0x86f   0x14  Code  Gb  gpio.o [3]
+GPIOPinTypeGPIOOutput         0x883    0xa  Code  Gb  gpio.o [3]
+GPIOPinWrite                  0x865    0x6  Code  Gb  gpio.o [3]
+HardFault_Handler             0xf03         Code  Wk  vectortrap_M.o [5]
+IntEnable                     0xd8b   0x56  Code  Gb  interrupt.o [3]
+IntPrioritySet                0xd67   0x24  Code  Gb  interrupt.o [3]
+IntRegister                   0xd41   0x26  Code  Gb  interrupt.o [3]
+Light1                         0x4b   0x52  Code  Gb  main.o [1]
+Light2                         0x9d   0x52  Code  Gb  main.o [1]
+MemManage_Handler             0xf03         Code  Wk  vectortrap_M.o [5]
+NMI_Handler                   0xf03         Code  Wk  vectortrap_M.o [5]
+NextState               0x2000'0000    0x1  Data  Gb  main.o [1]
+PendSV_Handler                0xf03         Code  Wk  vectortrap_M.o [5]
+PortAINIT                     0x48f   0x2a  Code  Gb  main.o [1]
+PortCINIT                     0x4e1   0x32  Code  Gb  main.o [1]
+PortEINIT                     0x4b9   0x28  Code  Gb  main.o [1]
+PortFHandler                  0x377   0x70  Code  Gb  main.o [1]
+PortFINIT                     0x513   0x66  Code  Gb  main.o [1]
+ReAlign                        0xef   0x6e  Code  Gb  main.o [1]
+Region$$Table$$Base           0xf50          --   Gb  - Linker created -
+Region$$Table$$Limit          0xf74          --   Gb  - Linker created -
+SVC_Handler                   0xf03         Code  Wk  vectortrap_M.o [5]
+SysCtlClockSet                0xc45   0xd8  Code  Gb  sysctl.o [3]
+SysCtlDelay                   0xc3d    0x8  Code  Gb  sysctl.o [3]
+SysCtlPeripheralEnable        0xc21    0x8  Code  Gb  sysctl.o [3]
+SysCtlPeripheralReady         0xc01    0x8  Code  Gb  sysctl.o [3]
+SysTick_Handler               0xf03         Code  Wk  vectortrap_M.o [5]
+Time0A_delay                  0x15d   0x2c  Code  Gb  main.o [1]
+Time1A_delay                  0x189   0x2c  Code  Gb  main.o [1]
+Timer0AHandler                0x1b5   0xe0  Code  Gb  main.o [1]
+Timer0INIT                    0x3e7   0x54  Code  Gb  main.o [1]
+Timer1AHandler                0x295   0xe2  Code  Gb  main.o [1]
+Timer1INIT                    0x43b   0x54  Code  Gb  main.o [1]
+TimerConfigure                0xabb   0x52  Code  Gb  timer.o [3]
+TimerDisable                  0xaaf    0xc  Code  Gb  timer.o [3]
+TimerEnable                   0xaa3    0xc  Code  Gb  timer.o [3]
+TimerIntClear                 0xb5d    0x4  Code  Gb  timer.o [3]
+TimerIntDisable               0xb51    0x4  Code  Gb  timer.o [3]
+TimerIntEnable                0xb47    0x4  Code  Gb  timer.o [3]
+TimerIntRegister              0xb2d   0x1a  Code  Gb  timer.o [3]
+TimerLoadSet                  0xb1d   0x10  Code  Gb  timer.o [3]
+UsageFault_Handler            0xf03         Code  Wk  vectortrap_M.o [5]
+_GPIOIntNumberGet             0x609   0x40  Code  Lc  gpio.o [3]
+_TimerIntNumberGet            0xa61   0x42  Code  Lc  timer.o [3]
+__cmain                       0xf75         Code  Gb  cmain.o [5]
+__exit                        0xfa9   0x14  Code  Gb  exit.o [6]
+__iar_copy_init3              0xed9   0x2a  Code  Gb  copy_init3.o [5]
+__iar_data_init3              0xf05   0x28  Code  Gb  data_init.o [5]
+__iar_init_vfp                0xf2d         Code  Gb  fpinit_M.o [4]
+__iar_program_start           0xfbd         Code  Gb  cstartup_M.o [5]
+__iar_zero_init3              0xea1   0x38  Code  Gb  zero_init3.o [5]
+__low_level_init              0xf93    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0         Data  Gb  vector_table_M.o [5]
+_call_main                    0xf81         Code  Gb  cmain.o [5]
+_exit                         0xf9d         Code  Gb  cexit.o [5]
+exit                          0xf97    0x4  Code  Gb  exit.o [2]
+g_pfnRAMVectors         0x2000'0400  0x26c  Data  Lc  interrupt.o [3]
+g_ppui32GPIOIntMapBlizzard
+                              0x8c8   0xc0  Data  Lc  gpio.o [3]
+g_ppui32GPIOIntMapSnowflake
+                              0x988   0xd8  Data  Lc  gpio.o [3]
+g_ppui32TimerIntMap           0xb60   0x60  Data  Lc  timer.o [3]
+g_ppui32TimerIntMapSnowflake
+                              0xbc0   0x40  Data  Lc  timer.o [3]
+g_pui32EnRegs                 0xe8c   0x14  Data  Lc  interrupt.o [3]
+g_pui32Regs                   0xdf0   0x9c  Data  Lc  interrupt.o [3]
+main                          0x5e5   0x24  Code  Gb  main.o [1]
+
+
+[1] = E:\Embedded\New folder\Debug\Obj
+[2] = dl7M_tln.a
+[3] = driverlib.a
+[4] = m7M_tls.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  4'018 bytes of readonly  code memory
+     42 bytes of readonly  data memory
+  2'667 bytes of readwrite data memory
+
+Errors: none
+Warnings: 1
